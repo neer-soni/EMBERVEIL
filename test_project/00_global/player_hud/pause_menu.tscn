@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp7c36tbnsrjd"]
+
+[ext_resource type="Script" uid="uid://dum240p8nluwm" path="res://00_global/player_hud/pause_menu.gd" id="1_el1ej"]
+
+[sub_resource type="Theme" id="Theme_o5o1p"]
+default_font_size = 117
+
+[node name="pause_menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_el1ej")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.102444984, 0.019247629, 0.019312786, 0.16470589)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5o1p")
+
+[node name="PAUSED" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Music" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="MusicVolume" type="HSlider" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Sfx" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="SfxVolume" type="HSlider" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Mute" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Mute"
+
+[node name="MainMenu" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Menu"
+
+[node name="Quit" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Quit"

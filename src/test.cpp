@@ -1,4 +1,4 @@
-#include "test.h"
+#include "test.hpp"
 #include <godot_cpp/core/print_string.hpp>
 
 using namespace godot;
