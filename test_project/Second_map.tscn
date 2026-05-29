@@ -1,6 +1,7 @@
-[gd_scene load_steps=177 format=4 uid="uid://ctnakk24novkh"]
+[gd_scene load_steps=178 format=4 uid="uid://ctnakk24novkh"]
 
 [ext_resource type="Texture2D" uid="uid://dl4uh3c3elyh3" path="res://PNG files/Second_map/road.png" id="1_4kulv"]
+[ext_resource type="Script" uid="uid://dxru23sg1wff4" path="res://level.gd" id="1_sxhsg"]
 [ext_resource type="PackedScene" uid="uid://d30ebo7uakvax" path="res://character_body_2d.tscn" id="2_nwgqt"]
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://character_body_2d.gd" id="3_fmwdj"]
 [ext_resource type="Texture2D" uid="uid://b1lnjqwg3wm4v" path="res://PNG files/Knight_1/Idle.png" id="4_b80i3"]
@@ -3812,6 +3813,8 @@ transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition
 size = Vector2(90.25, 154.5)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_sxhsg")
+music_key = "level2"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(4, 263)
@@ -4176,7 +4179,6 @@ tree_root = SubResource("AnimationNodeStateMachine_cdd2s")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="Damageable" type="Damageable" parent="yokai_1"]
-health = 200.0
 
 [node name="hitbox" type="Area2D" parent="yokai_1" node_paths=PackedStringArray("zombie", "facing_shape")]
 collision_layer = 0
@@ -4228,6 +4230,7 @@ can_move = false
 walk_state = NodePath("../walk")
 attack_state = NodePath("../Attack")
 player = NodePath("../..")
+chase_speed = 320.0
 attack_range = 150.0
 
 [node name="yokai_2" type="CharacterBody2D" parent="." node_paths=PackedStringArray("hit_state", "walk_state", "chase_state", "attack_state")]
@@ -4260,7 +4263,6 @@ tree_root = SubResource("AnimationNodeStateMachine_cdd2s")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="Damageable" type="Damageable" parent="yokai_2"]
-health = 200.0
 
 [node name="hitbox" type="Area2D" parent="yokai_2" node_paths=PackedStringArray("zombie", "facing_shape")]
 collision_layer = 0
@@ -4314,6 +4316,7 @@ can_move = false
 walk_state = NodePath("../walk")
 attack_state = NodePath("../Attack")
 player = NodePath("../..")
+chase_speed = 320.0
 attack_range = 150.0
 
 [node name="yokai_3" type="CharacterBody2D" parent="." node_paths=PackedStringArray("hit_state", "walk_state", "chase_state", "attack_state")]
@@ -4377,6 +4380,7 @@ attack_anim_3 = "attack_3"
 walk_state = NodePath("../walk")
 attack_state = NodePath("../Attack")
 player = NodePath("../..")
+chase_speed = 320.0
 
 [node name="hitbox" type="Area2D" parent="yokai_3" node_paths=PackedStringArray("zombie", "facing_shape")]
 collision_layer = 0
@@ -4455,6 +4459,7 @@ attack_anim_3 = "attack_3"
 walk_state = NodePath("../walk")
 attack_state = NodePath("../Attack")
 player = NodePath("../..")
+chase_speed = 320.0
 
 [node name="hitbox" type="Area2D" parent="yokai_4" node_paths=PackedStringArray("zombie", "facing_shape")]
 collision_layer = 0
@@ -4474,6 +4479,7 @@ facing_right_position = Vector2(2919.25, 651.5)
 [node name="player2" parent="." groups=["player"] instance=ExtResource("2_nwgqt")]
 collision_layer = 2
 script = ExtResource("3_fmwdj")
+speed = 550.0
 double_jump_velocity = -150.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player2"]
@@ -4546,6 +4552,7 @@ script = ExtResource("48_2k6uh")
 can_move = false
 
 [node name="StateDebug" type="Label" parent="player2" node_paths=PackedStringArray("state_machine")]
+visible = false
 offset_left = 536.0
 offset_top = 329.0
 offset_right = 585.0
@@ -4563,7 +4570,7 @@ collision_layer = 0
 collision_mask = 28
 monitoring = false
 script = ExtResource("25_rofmv")
-damage = 50
+damage = 20
 player = NodePath("../..")
 facing_shape = NodePath("CollisionShape2D")
 Player_shape = NodePath("../../CollisionShape2D")

@@ -11,6 +11,7 @@ func on_enter():
 	can_move = false
 	character.set_physics_process(false)
 	character.set_process_input(false)
+	AudioManager.play_music("dead")
 	playback.travel("Dead")
 	_await_death()
 

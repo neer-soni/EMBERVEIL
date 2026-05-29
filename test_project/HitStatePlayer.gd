@@ -8,7 +8,7 @@ class_name HitStatePlayer
 @export var hurt_animation          : String = "Hurt"
 @export var dead_animation_node     : String = "Dead"
 @export var knockback_speed         : float  = 500.0
-
+var _player_is_dead : bool = false
 @onready var timer : Timer = $Timer
 
 var _knockback_dir : Vector2 = Vector2.ZERO
@@ -24,18 +24,22 @@ func on_enter() -> void:
 
 func on_Damageable_hit(_node: Node, _damage_amount: int, _knockback_direction: Vector2) -> void:
 	# Guard 1 — already dead, ignore everything
-	if character_State_Machine.current_state == _dead_state:
+	if _player_is_dead or character_State_Machine.current_state == _dead_state:
 		return
 
 	print("Hit! Health: ", damageable_component.get_health())
 
 	# Guard 2 — just died, switch to dead state
 	if damageable_component.get_health() <= 0:
+		_player_is_dead = true
+		#_paused = true
+		AudioManager.play_sfx("player_death")  
 		print("Health <= 0, switching to dead state: ", _dead_state)
 		emit_signal("interrupt_state", _dead_state)
 		return
 
 	# Normal hit processing
+	AudioManager.play_sfx("player_hit")
 	_knockback_dir = _knockback_direction
 	if character_State_Machine.current_state != self:
 		emit_signal("interrupt_state", self)

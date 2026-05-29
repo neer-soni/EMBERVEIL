@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Test_Project"
-run/main_scene="res://main.tscn"
+config/name="EMBERVEIL"
+run/main_scene="uid://cb6gbe8qaands"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://caf0683wnaai6"
 
 [autoload]
 
@@ -21,6 +21,8 @@ SceneManager="*res://00_global/scene_manager/scene_manager.tscn"
 PlayerHud="*res://00_global/player_hud/player_hud.tscn"
 SaveManager="*res://00_global/Save_Manager.gd"
 PauseMenu="*res://00_global/player_hud/pause_menu.tscn"
+AudioManager="*res://00_global/audio_manager.tscn"
+SignalBus2="*res://signal_bus2.gd"
 
 [display]
 

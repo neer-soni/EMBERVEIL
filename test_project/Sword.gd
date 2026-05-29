@@ -24,6 +24,7 @@ func _on_body_entered(body: Node) -> void:
 
 	for child in body.get_children():
 		if child is Damageable:
+			AudioManager.play_sfx("enemy_hit")
 			var dir : Vector2 = body.global_position - get_parent().global_position
 			var dir_sign : float = sign(dir.x)
 
@@ -42,3 +43,6 @@ func _on_player_facing_direction_changed(facing_right: bool) -> void:
 	else:
 		facing_shape.position = facing_shape.facing_left_position
 		Player_shape.position = Player_shape.facing_left_position
+# Add this method to the sword script
+func play_swing_sound():
+	AudioManager.play_sfx("sword_swing")

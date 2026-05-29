@@ -2,12 +2,16 @@
 class_name Level_transition extends Node2D
 
 enum SIDE { LEFT , RIGHT , TOP , BOTTOM }
-
+const LEVEL_MUSIC = {
+	"uid://d2btqn8sfli11": "level1",
+	"uid://ctnakk24novkh": "level2",
+	"uid://bea3qs0f5uqff": "level3",
+	"uid://df8u05p7a7t57": "final",
+}
 @export_range(2 , 16, 1, "or_greater ") var size : int = 2 : 
 	set (value):
 		size = value 
 		apply_area_settings()
-
 @export var location : SIDE = SIDE.LEFT:
 	set(value):
 		location = value
@@ -32,13 +36,7 @@ func _exit_tree() -> void:
 	if SceneManager.load_scene_finished.is_connected(_on_load_scene_finished):
 		SceneManager.load_scene_finished.disconnect(_on_load_scene_finished)
 
-func _on_player_entered(_n : Node2D) -> void:
-	
-	var next_level_number = SaveManager.get_level_number(target_level)
-	if next_level_number > SaveManager.save_data["last_unlocked_level"]:
-		SaveManager.save_data["last_unlocked_level"] = next_level_number
-		SaveManager.save()
-	SceneManager.transition_scene(target_level, target_area_name, get_offset(_n), "left")
+
 
 func _on_new_scene_ready(target_name : String, offset : Vector2):
 	if target_name == name:
@@ -81,3 +79,12 @@ func apply_area_settings() -> void:
 			area_2d.scale.y = 1
 		else:
 			area_2d.scale.y = -1
+func _on_player_entered(_n: Node2D) -> void:
+	AudioManager.play_sfx("level_transition")
+
+	var next_level_number = SaveManager.get_level_number(target_level)
+	if next_level_number > SaveManager.save_data["last_unlocked_level"]:
+		SaveManager.save_data["last_unlocked_level"] = next_level_number
+		SaveManager.save()
+	
+	SceneManager.transition_scene(target_level, target_area_name, get_offset(_n), "left")

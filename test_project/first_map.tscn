@@ -1,6 +1,7 @@
-[gd_scene load_steps=238 format=4 uid="uid://d2btqn8sfli11"]
+[gd_scene load_steps=239 format=4 uid="uid://d2btqn8sfli11"]
 
 [ext_resource type="Texture2D" uid="uid://vf0ek7arqh8k" path="res://PNG files/First_map/sand.png" id="1_16hru"]
+[ext_resource type="Script" uid="uid://dxru23sg1wff4" path="res://level.gd" id="1_t6gqv"]
 [ext_resource type="Texture2D" uid="uid://bkkwu12vrcaav" path="res://PNG files/First_map/sky.png" id="2_jbf8f"]
 [ext_resource type="Texture2D" uid="uid://cchmmenrsyy48" path="res://PNG files/First_map/sand_back.png" id="3_8a8w1"]
 [ext_resource type="Texture2D" uid="uid://k4nnwnv1y0sy" path="res://PNG files/First_map/sand&objects3.png" id="4_xvfty"]
@@ -9736,6 +9737,7 @@ states/run/position = Vector2(536, 649)
 states/walk/node = SubResource("AnimationNodeAnimation_ag581")
 states/walk/position = Vector2(480, 113)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_s4mdg"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_8wav8"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_5b3fs"), "walk", "hurt", SubResource("AnimationNodeStateMachineTransition_p46u7"), "hurt", "walk", SubResource("AnimationNodeStateMachineTransition_0m4r6"), "run", "hurt", SubResource("AnimationNodeStateMachineTransition_ty0cr"), "hurt", "run", SubResource("AnimationNodeStateMachineTransition_5m3af"), "walk", "Attack3", SubResource("AnimationNodeStateMachineTransition_r02n5"), "Attack3", "walk", SubResource("AnimationNodeStateMachineTransition_ve7w7"), "walk", "Attack2", SubResource("AnimationNodeStateMachineTransition_bp28e"), "Attack2", "walk", SubResource("AnimationNodeStateMachineTransition_hjaf7"), "walk", "Attack1", SubResource("AnimationNodeStateMachineTransition_lnl3o"), "Attack1", "walk", SubResource("AnimationNodeStateMachineTransition_dyw47"), "run", "Attack3", SubResource("AnimationNodeStateMachineTransition_cpvwc"), "Attack3", "run", SubResource("AnimationNodeStateMachineTransition_3h5yu"), "Attack2", "run", SubResource("AnimationNodeStateMachineTransition_yakbj"), "run", "Attack2", SubResource("AnimationNodeStateMachineTransition_yhaj4"), "Attack1", "run", SubResource("AnimationNodeStateMachineTransition_ol1eo"), "run", "Attack1", SubResource("AnimationNodeStateMachineTransition_yrfwa"), "run", "dead", SubResource("AnimationNodeStateMachineTransition_h4lt7"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_38uwm")]
+graph_offset = Vector2(148.91061, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n4i8h"]
 size = Vector2(54, 138)
@@ -9796,6 +9798,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GraphicsRoot/Sword")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_swing_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_8wav8"]
 resource_name = "Attack_2"
@@ -9849,6 +9865,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GraphicsRoot/Sword")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_swing_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_5b3fs"]
 resource_name = "Attack_3"
@@ -9901,6 +9931,20 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GraphicsRoot/Sword")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_swing_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_p46u7"]
@@ -10357,6 +10401,7 @@ transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition
 size = Vector2(90.25, 154.5)
 
 [node name="First_map" type="Node2D"]
+script = ExtResource("1_t6gqv")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-1, 213)
@@ -10695,7 +10740,7 @@ wait_time = 0.25
 walk_state = NodePath("../walk")
 attack_state = NodePath("../Attack")
 player = NodePath("../..")
-chase_speed = 180.0
+chase_speed = 380.0
 
 [node name="Attack" type="ZombieAttackState" parent="Zombie1/CharacterStateMachine" node_paths=PackedStringArray("chase_state", "hitbox", "player")]
 attack_cooldown = 1.5
@@ -10709,7 +10754,7 @@ collision_layer = 0
 collision_mask = 2
 monitoring = false
 script = ExtResource("16_o42re")
-damage = 10
+damage = 15
 zombie = NodePath("..")
 facing_shape = NodePath("CollisionShape2D")
 
@@ -10750,7 +10795,7 @@ collision_layer = 0
 collision_mask = 2
 monitoring = false
 script = ExtResource("26_738dc")
-damage = 10
+damage = 15
 zombie = NodePath("..")
 facing_shape = NodePath("CollisionShape2D")
 
@@ -10793,6 +10838,7 @@ wait_time = 0.25
 walk_state = NodePath("../walk")
 attack_state = NodePath("../Attack")
 player = NodePath("../..")
+chase_speed = 320.0
 
 [node name="Attack" type="ZombieAttackState" parent="Zombie2/CharacterStateMachine" node_paths=PackedStringArray("chase_state", "hitbox", "player")]
 attack_cooldown = 1.5
@@ -10831,6 +10877,7 @@ collision_layer = 0
 collision_mask = 2
 monitoring = false
 script = ExtResource("37_c5tum")
+damage = 10
 zombie = NodePath("..")
 facing_shape = NodePath("CollisionShape2D")
 
@@ -10870,6 +10917,7 @@ one_shot = true
 walk_state = NodePath("../walk")
 attack_state = NodePath("../Attack")
 player = NodePath("../..")
+chase_speed = 320.0
 
 [node name="Attack" type="ZombieAttackState" parent="Zombie3/CharacterStateMachine" node_paths=PackedStringArray("chase_state", "hitbox", "player")]
 attack_cooldown = 1.5
@@ -10892,6 +10940,7 @@ target_level = "uid://ctnakk24novkh"
 [node name="player2" parent="." groups=["player"] instance=ExtResource("41_y5rgw")]
 collision_layer = 2
 script = ExtResource("42_t6gqv")
+speed = 550.0
 double_jump_velocity = -150.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player2"]
@@ -10964,6 +11013,7 @@ script = ExtResource("60_y5rgw")
 can_move = false
 
 [node name="StateDebug" type="Label" parent="player2" node_paths=PackedStringArray("state_machine")]
+visible = false
 offset_left = 536.0
 offset_top = 329.0
 offset_right = 585.0
@@ -10981,7 +11031,7 @@ collision_layer = 0
 collision_mask = 28
 monitoring = false
 script = ExtResource("63_5ov38")
-damage = 50
+damage = 15
 player = NodePath("../..")
 facing_shape = NodePath("CollisionShape2D")
 Player_shape = NodePath("../../CollisionShape2D")

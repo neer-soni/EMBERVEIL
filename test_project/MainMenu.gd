@@ -18,12 +18,13 @@ extends Control
 @onready var btn_delete_slot_1 : Button = $LoadGameMainMenu2/HBoxContainer/DeleteSlot_1
 @onready var btn_delete_slot_2 : Button = $LoadGameMainMenu2/HBoxContainer2/DeleteSlot_2
 @onready var btn_delete_slot_3 : Button = $LoadGameMainMenu2/HBoxContainer3/DeleteSlot_3
-
+const CUTSCENE_PATH = "uid://b2u7h0ht3y5y3"
 const FIRST_MAP_UID = "uid://d2btqn8sfli11"
 
 var _pending_delete_slot : int = -1
 
 func _ready():
+	AudioManager.play_music("menu")
 	main_menu.scale      = Vector2.ONE
 	new_game_panel.scale = Vector2.ONE
 	load_game_panel.scale = Vector2.ONE
@@ -45,6 +46,7 @@ func _ready():
 	btn_delete_slot_3.pressed.connect(func(): _confirm_delete(3))
 
 	_show_main_menu()
+	_connect_button_sounds([btn_new_game, btn_load_game, btn_quit])
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -89,6 +91,11 @@ func _confirm_delete(slot: int):
 		_pending_delete_slot = slot
 		_update_delete_buttons()
 
+func _connect_button_sounds(buttons: Array):
+	for btn in buttons:
+		btn.pressed.connect(func(): AudioManager.play_sfx("button_click"))
+		btn.mouse_entered.connect(func(): AudioManager.play_sfx("button_hover"))
+
 func _update_delete_buttons():
 	btn_delete_slot_1.text    = "X  Confirm?" if _pending_delete_slot == 1 else "X"
 	btn_delete_slot_2.text    = "X  Confirm?" if _pending_delete_slot == 2 else "X"
@@ -101,12 +108,14 @@ func _start_new_game(slot: int):
 	SaveManager.current_slot = slot
 	SaveManager.save_data["last_unlocked_level"] = 1
 	SaveManager.save()
-	SceneManager.transition_scene(FIRST_MAP_UID, "LevelTransition", Vector2.ZERO, "left")
+	AudioManager.stop_music() 
+	get_tree().change_scene_to_file(CUTSCENE_PATH)
 
 func _load_game(slot: int):
 	SaveManager.load_slot(slot)
 	var level    = SaveManager.save_data["last_unlocked_level"]
 	var scene_uid = _get_scene_uid_for_level(level)
+	AudioManager.stop_music() 
 	SceneManager.transition_scene(scene_uid, "LevelTransition", Vector2.ZERO, "left")
 
 func _any_slot_exists() -> bool:

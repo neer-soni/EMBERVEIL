@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://gwh4clyy6v58"]
+
+[ext_resource type="Texture2D" uid="uid://b5gxheq08v134" path="res://PNG files/ChatGPT Image May 29, 2026, 12_46_00 PM.png" id="1_1nylk"]
+[ext_resource type="Script" uid="uid://7wj834dpcila" path="res://00_global/victory.gd" id="1_8de4j"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8de4j"]
+
+[sub_resource type="Theme" id="Theme_yale8"]
+default_font_size = 143
+
+[sub_resource type="Theme" id="Theme_bo74p"]
+default_font_size = 150
+
+[sub_resource type="Theme" id="Theme_7qooo"]
+default_font_size = 150
+
+[node name="victory" type="CanvasLayer"]
+layer = 6
+script = ExtResource("1_8de4j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1004.6755, 578.75)
+scale = Vector2(1.2256882, 1.2276641)
+texture = ExtResource("1_1nylk")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.04, 0.04, 0.04, 1)
+material = SubResource("CanvasItemMaterial_8de4j")
+offset_left = 78.0
+offset_top = 214.0
+offset_right = 928.12134
+offset_bottom = 405.0501
+theme = SubResource("Theme_yale8")
+text = "EMBERVEIL"
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -869.0
+offset_top = -21.0
+offset_right = 290.0
+offset_bottom = 301.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="Button" parent="HBoxContainer"]
+modulate = Color(0.04, 0.04, 0.04, 1)
+layout_mode = 2
+theme = SubResource("Theme_bo74p")
+text = "Menu      "
+flat = true
+alignment = 0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Button3" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Button4" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Button5" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Button6" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Button7" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Quit" type="Button" parent="HBoxContainer"]
+modulate = Color(0.04, 0.04, 0.04, 1)
+layout_mode = 2
+theme = SubResource("Theme_7qooo")
+text = "Quit"
+flat = true
+alignment = 0

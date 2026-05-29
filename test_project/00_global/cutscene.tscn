@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2u7h0ht3y5y3"]
+
+[ext_resource type="Script" uid="uid://b6l28rcbnqjl3" path="res://00_global/cutscene.gd" id="1_30k6p"]
+[ext_resource type="VideoStream" uid="uid://cbg7t11q5spx2" path="res://audio/WhatsApp Video 2026-05-25 at 11.07.12 PM (1).ogv" id="2_hrmsq"]
+
+[node name="cutscene" type="Node2D"]
+script = ExtResource("1_30k6p")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 7
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1912.0
+offset_bottom = 1076.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_hrmsq")
+expand = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -17.0
+grow_horizontal = 0
+grow_vertical = 0

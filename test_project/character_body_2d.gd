@@ -4,7 +4,8 @@ class_name Player
 @export var speed : float = 300.0
 @export var max_health : float = 100.0          # ADD THIS
 @export var double_jump_velocity : float = -100
-
+# Change to whatever your node is actually named, e.g:
+@onready var dead_state : DeadState = $CharacterStateMachine/Dead
 @onready var sprite : Sprite2D = $GraphicsRoot/Sprite2D
 @onready var graphics_root : Node2D = $GraphicsRoot
 @onready var sword : Node2D = $GraphicsRoot/Sword
@@ -35,7 +36,10 @@ func _ready():
 	_update_hud()
 
 func _on_player_damaged(_node, _damage_taken, _knockback):
+	AudioManager.play_sfx("player_hit")
 	_update_hud()
+	if damageable_player.health <= 0:
+		state_machine.switch_states(dead_state)
 
 
 

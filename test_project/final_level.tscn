@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3jhbm4y3oqlu"]
-
-[ext_resource type="PackedScene" path="res://final_level.tscn" id="1_bdlou"]
-
-[node name="Final_Level" instance=ExtResource("1_bdlou")]
