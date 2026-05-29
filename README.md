@@ -43,7 +43,7 @@ You play as a knight battling through four distinct worlds — a post-apocalypti
 ## Project Structure
 
 ```
-Stickman-The_New_Gen/
+EMBERVEIL/
 ├── src/                    # C++ GDExtension source (state machine, damageable, hit state)
 ├── test_project/           # Main Godot project
 │   ├── 00_global/          # Autoloads: SceneManager, PlayerHud, SaveManager, PauseMenu
