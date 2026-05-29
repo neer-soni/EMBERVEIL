@@ -8,6 +8,10 @@ A 2D side-scrolling action game built with **Godot 4.5**, featuring a custom C++
 
 You play as a knight battling through four distinct worlds — a post-apocalyptic desert, an urban wasteland, a jungle, and a final fortress — against waves of enemies ranging from shambling zombies to mythological creatures. Each world has its own hand-drawn art and original music track.
 
+<img width="1913" height="1113" alt="Screenshot 2026-05-29 180442" src="https://github.com/user-attachments/assets/c91e8d58-74f3-4bd3-aa13-132fe11bdc64" />
+<img width="1891" height="1116" alt="Screenshot 2026-05-29 180618" src="https://github.com/user-attachments/assets/6a0c659b-b732-435d-a17b-437f4f77f4fe" />
+<img width="1904" height="1123" alt="Screenshot 2026-05-29 180800" src="https://github.com/user-attachments/assets/8da614ba-5255-4436-b6f0-1e36cda6718a" />
+
 ---
 
 ## Features
