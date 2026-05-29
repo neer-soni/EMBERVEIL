@@ -52,7 +52,6 @@ EMBERVEIL/
 ├── test_project/           # Main Godot project
 │   ├── 00_global/          # Autoloads: SceneManager, PlayerHud, SaveManager, PauseMenu
 │   ├── PNG files/          # All sprite sheets and backgrounds
-│   │   ├── Aku/            # Player character sprites
 │   │   ├── Knight_1/       # Knight character sprites
 │   │   ├── Villain_char/   # Enemy sprites (Zombie, Gorgon, Minotaur, Satyr, Yokai, Wizard)
 │   │   ├── First_map/ … Final_map/   # Level backgrounds
