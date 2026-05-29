@@ -1,4 +1,4 @@
-# Stickman: The New Gen
+# EMBERVEIL
 
 A 2D side-scrolling action game built with **Godot 4.5**, featuring a custom C++ GDExtension plugin, a rich enemy roster, multiple handcrafted levels, and a full save system.
 
